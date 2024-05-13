@@ -17,30 +17,30 @@ public class StatsService {
         return average;
     }
 
-    public long getMaxSales(long[] sales) {          //Подсчет номера месяца, в котором был пик продаж
-        long maxMonth = 0;
+    public int getMaxSales(long[] sales) {          //Подсчет номера месяца, в котором был пик продаж
+        int maxMonth = 0;
 
         for (int i = 0; i < sales.length; i++) {
-            if (sales[i] >= sales[(int) maxMonth]) {
+            if (sales[i] >= sales[maxMonth]) {
                 maxMonth = i;
             }
         }
         return maxMonth + 1;
     }
 
-    public long getMinSales(long[] sales) {         //Подсчет номера месяца, в котором был минимум продаж
-        long minMonth = 0;
+    public int getMinSales(long[] sales) {         //Подсчет номера месяца, в котором был минимум продаж
+        int minMonth = 0;
 
         for (int i = 0; i < sales.length; i++) {
-            if (sales[i] <= sales[(int) minMonth]) {
+            if (sales[i] <= sales[minMonth]) {
                 minMonth = i;
             }
         }
         return minMonth + 1;
     }
 
-    public long getMinAverage(long[] sales) {      //Количество месяцев, в которых продажи были ниже среднего
-        long countMinAverage = 0;
+    public int getMinAverage(long[] sales) {      //Количество месяцев, в которых продажи были ниже среднего
+        int countMinAverage = 0;
         long average = getAverageSales(sales);
         for (int i = 0; i < 12; i++) {
             if (sales[i] < average) {
@@ -50,8 +50,8 @@ public class StatsService {
         return countMinAverage;
     }
 
-    public long getMaxAverage(long[] sales) {      //Количество месяцев, в которых продажи были выше среднего
-        long countMaxAverage = 0;
+    public int getMaxAverage(long[] sales) {      //Количество месяцев, в которых продажи были выше среднего
+        int countMaxAverage = 0;
         long average = getAverageSales(sales);
         for (int i = 0; i < 12; i++) {
             if (sales[i] >= average) {
